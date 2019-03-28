@@ -17,7 +17,8 @@ def detect(gray, frame):
         roi_color = frame[y:y+h, x:x+w]
         smile = smile_cascade.detectMultiScale(roi_gray, 1.7, 30)
         for (ex, ey, ew, eh) in smile:
-            cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 3)
+            rec = cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 3)
+            cv2.putText(roi_color,'smile',(5,110), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,255,0),1,cv2.LINE_AA)
     return frame
 
 # Doing some Face Recognition with the webcam
